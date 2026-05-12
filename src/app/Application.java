@@ -1,7 +1,5 @@
 package app;
 
-import models.Bouteille;
-import models.Cageot;
 import models.Client;
 import models.Commande;
 
@@ -9,33 +7,20 @@ public class Application {
 
     public static void main(String[] args) {
     
-        //
-        //              )        (                 ) (           (         (
-        //           ( /(   *   ))\ )        (  ( /( )\ )        )\ )  (   )\ )
-        //     (   ( )\())` )  /(()/((       )\ )\()|()/(  (    (()/(  )\ (()/(
-        //     )\  )((_)\  ( )(_))(_))\    (((_|(_)\ /(_)) )\    /(_)|((_) /(_))
-        //    ((_)((_)((_)(_(_()|_))((_)   )\___ ((_|_))_ ((_)  (_)) )\___(_))
-        //    __   _____ _____ ___ ___    ___ ___  ___  ___   ___ ___ ___   _
-        //    \ \ / / _ \_   _| _ \ __|  / __/ _ \|   \| __| |_ _/ __|_ _| | |
-        //     \ V / (_) || | |   / _|  | (_| (_) | |) | _|   | | (__ | |  |_|
-        //      \_/ \___/ |_| |_|_\___|  \___\___/|___/|___| |___\___|___| (_)
-        //
 
     }
 
     public static void afficherCommande(Commande commande) {
-    
-        //
-        //              )        (                 ) (           (         (
-        //           ( /(   *   ))\ )        (  ( /( )\ )        )\ )  (   )\ )
-        //     (   ( )\())` )  /(()/((       )\ )\()|()/(  (    (()/(  )\ (()/(
-        //     )\  )((_)\  ( )(_))(_))\    (((_|(_)\ /(_)) )\    /(_)|((_) /(_))
-        //    ((_)((_)((_)(_(_()|_))((_)   )\___ ((_|_))_ ((_)  (_)) )\___(_))
-        //    __   _____ _____ ___ ___    ___ ___  ___  ___   ___ ___ ___   _
-        //    \ \ / / _ \_   _| _ \ __|  / __/ _ \|   \| __| |_ _/ __|_ _| | |
-        //     \ V / (_) || | |   / _|  | (_| (_) | |) | _|   | | (__ | |  |_|
-        //      \_/ \___/ |_| |_|_\___|  \___\___/|___/|___| |___\___|___| (_)
-        //
+        
+    Client client = new Client("De Montmollin", "Joakim", "Fribourg");
+    Commande commandetest = new Commande(client, 5);
 
+        if (commande != null) {
+            System.out.println("-----------------------------");
+            System.out.println("Commande pour le client : " + commandetest.getClient());
+            String cageotsALivrer = commandetest.listeCageotsALivrer();
+        } else {
+            
+        }
     }
 }

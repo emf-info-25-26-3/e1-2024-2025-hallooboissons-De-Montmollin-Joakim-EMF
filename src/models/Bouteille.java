@@ -12,11 +12,11 @@ public class Bouteille {
     private final boolean estEnVerre;
 
     // Constructeur
-    public Bouteille(String nom, double prix, int contenance, double remplissage, boolean estEnVerre) {
+    public Bouteille(String nom, double prix, int contenance, boolean estEnVerre) {
         this.nom = nom;
         this.prix = prix;
         this.contenance = contenance;
-        this.remplissage = remplissage;
+        this.remplissage = 100.0;
         this.estEnVerre = estEnVerre;
     }
 
@@ -41,7 +41,7 @@ public class Bouteille {
         this.remplissage = remplissage;
     }
 
-    public boolean EstEnVerre() {
+    public boolean getEstEnVerre() {
         return estEnVerre;
     }
 
@@ -50,7 +50,22 @@ public class Bouteille {
     // toString
     @Override
     public String toString() {
-        return "Bouteille '" + nom + "' de " + contenance + "L en " + estEnVerre + " à " + df.format(prix) + "Frs - "
-                + remplissage;
+        String bouteille;
+        if (estEnVerre == false) {
+            bouteille = "verre";
+        }else{
+            bouteille = "plastique";
+        }
+
+        String etat;
+        if (remplissage == 100.0) {
+            etat = "pleine";
+        } else if(remplissage <= 0.0) {
+            etat = "vide";
+        }else{
+            etat = "entamée";
+        }
+        return "Bouteille '" + nom + "' de " + contenance + "L en " + bouteille + " à " + df.format(prix) + "Frs - "
+                + etat;
     }
 }
