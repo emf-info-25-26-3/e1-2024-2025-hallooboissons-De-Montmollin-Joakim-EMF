@@ -7,7 +7,7 @@ public class Bouteille {
     // Attributs
     private final String nom;
     private final double prix;
-    private final int contenance;
+    private final double contenance;
     private double remplissage;
     private final boolean estEnVerre;
 
@@ -29,7 +29,7 @@ public class Bouteille {
         return prix;
     }
 
-    public int getContenance() {
+    public double getContenance() {
         return contenance;
     }
 
@@ -52,17 +52,17 @@ public class Bouteille {
     public String toString() {
         String bouteille;
         if (estEnVerre == false) {
-            bouteille = "verre";
-        }else{
             bouteille = "plastique";
+        } else {
+            bouteille = "verre";
         }
 
         String etat;
         if (remplissage == 100.0) {
             etat = "pleine";
-        } else if(remplissage <= 0.0) {
+        } else if (remplissage <= 0.0) {
             etat = "vide";
-        }else{
+        } else {
             etat = "entamée";
         }
         return "Bouteille '" + nom + "' de " + contenance + "L en " + bouteille + " à " + df.format(prix) + "Frs - "

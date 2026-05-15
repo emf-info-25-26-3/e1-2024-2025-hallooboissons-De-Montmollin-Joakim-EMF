@@ -1,5 +1,7 @@
 package models;
 
+import java.text.DecimalFormat;
+
 public class Cageot {
 
     // Constantes
@@ -27,19 +29,17 @@ public class Cageot {
 
     public void prendreBouteille(Bouteille bouteille) {
         if (bouteilles >= 1) {
-            for (int i = 0; i < tableauBouteilles.length; i++) {
-                for (int j = 0; j < tableauBouteilles.length; j++) {
-                    if (tableauBouteilles[j]) {
-                        
+            for (int i = 0; i < bouteilles; i++) {
+                if (tableauBouteilles[i] == bouteille) {
+                    // Commencer au lieu supprimé
+                    for (int j = i; j < bouteilles - 1; j++) {
+                        tableauBouteilles[j] = tableauBouteilles[j + 1];
                     }
-               if (tableauBouteilles[i] == bouteille) {
-                tableauBouteilles[i] = null;
-                bouteilles--;
-                tableauBouteilles[i] = tableauBouteilles[i + 1];
-                tableauBouteilles[i + 1] = null;
-                break;
-               } 
-            }
+                    // Nettoyage de la dernière case
+                    tableauBouteilles[bouteilles - 1] = null;
+                    bouteilles--;
+                    break;
+                }
             }
         }
     }
@@ -59,6 +59,16 @@ public class Cageot {
         return tabTemp;
     }
 
+    public double prixTotal() {
+        double compteur = 0;
+        for (int i = 0; i < tableauBouteilles.length; i++) {
+            if (tableauBouteilles[i] != null) {
+                compteur += tableauBouteilles[i].getPrix();
+            }
+        }
+        return compteur;
+    }
+
     // Getters et Setters
     public int getbouteilles() {
         return bouteilles;
@@ -72,10 +82,12 @@ public class Cageot {
         return tableauBouteilles;
     }
 
+    DecimalFormat df = new DecimalFormat("#.0");
+
     // toString
     @Override
     public String toString() {
-        return "Cageot '" + identifiantUnique + "' avec " + bouteilles + "/" + nombreDePlacesDisponibles()
+        return "Cageot '" + identifiantUnique + "' avec " + df.format(bouteilles) + "/" + nombreDePlacesDisponibles()
                 + " bouteilles";
     }
 
